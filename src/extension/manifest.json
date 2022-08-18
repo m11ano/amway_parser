@@ -1,0 +1,15 @@
+{
+    "name": "Amway / Мой склад",
+    "description": "Плагин для переноса заказов",
+    "version": "1.0",
+    "manifest_version": 3,
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "host_permissions": [
+        "*://*/"
+    ],
+    "permissions": [
+        "cookies"
+    ]
+}
