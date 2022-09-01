@@ -117,27 +117,48 @@ a img {
       border:1px solid #888;
       border-radius:5px;
       padding:12px;
+      position: relative;
 
       &:first-child {
         margin-top: 0;
       }
 
-      > .i1 {
-        font-size:16px;
-
-        > span {
-          font-weight: bold;
-          font-size:18px;
+      &.hide {
+        > div {
+          opacity: 0.5;
         }
       }
 
-      > .i2 {
-        font-size:14px;
-        padding-top:2px;
+      > .top {
+        display: flex;
 
-        > span {
-          font-size:16px;
+        > .left {
+          flex-basis: calc(100% - 100px);
+
+          > .i1 {
+            font-size:16px;
+
+            > span {
+              font-weight: bold;
+              font-size:18px;
+            }
+          }
+
+          > .i2 {
+            font-size:14px;
+            padding-top:2px;
+
+            > span {
+              font-size:16px;
+            }
+          }
         }
+
+        > .right {
+          flex-basis: 100px;
+          text-align: right;
+        }
+
       }
 
       > .goods {
@@ -227,6 +248,24 @@ a img {
         padding-top:5px;
         font-size: 0;
       }
+    }
+
+    > .block_error {
+      padding-top:15px;
+      font-size:18px;
+      color:brown;
+    }
+  
+    > .block_loading {
+      font-size:18px;
+      color:brown;
+      padding-top:15px;
+    }
+
+    > .block_result {
+      font-size:18px;
+      color:green;
+      padding-top:15px;
     }
 
     > .send {

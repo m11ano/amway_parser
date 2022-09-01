@@ -1,6 +1,7 @@
 interface orderData {
     order : orderDataItem,
-    subOrders : orderDataItem[]
+    subOrders : orderDataItem[],
+    date : Date
 }
 
 interface orderDataItem {
@@ -51,7 +52,8 @@ const Factory = {
                     try {
                         let orderDataItem : orderData = {
                             order : this.parseOrderFromData(data.orderData, 'KZ'),
-                            subOrders : []
+                            subOrders : [],
+                            date : new Date(data.orderData.created)
                         };
 
                         let engine = (subCarts : Array<any>)=>{
@@ -161,7 +163,7 @@ const Factory = {
                             id : cId + postfix,
                             quantity : good.componentQuantity,
                             price : good.component.lynxTotalPrice.value,
-                            name : good.component.name
+                            name : '(KZ) ' + good.component.name
                         });
                     }
                 }
@@ -171,7 +173,7 @@ const Factory = {
                         id : (good.product.alias ? good.product.alias : good.product.code).replace(/\D.*/, '') + postfix,
                         quantity : good.quantity,
                         price : good.basePrice.value,
-                        name : good.product.name
+                        name : '(KZ) ' + good.product.name
                     });
                 }
             }
