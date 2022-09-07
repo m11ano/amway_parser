@@ -169,7 +169,7 @@ class moySkladFactory {
             },
             salePrices: [
                 {
-                  "value": good.price,
+                  "value": good.price*100,
                   "currency": {
                     "meta": {
                       "href": "https://online.moysklad.ru/api/remap/1.2/entity/currency/d3461fe0-ddf9-11ec-0a80-01ef00125213",
@@ -187,7 +187,7 @@ class moySkladFactory {
                   }
                 },
                 {
-                    "value": good.price,
+                    "value": good.price*100,
                     "currency": {
                       "meta": {
                         "href": "https://online.moysklad.ru/api/remap/1.2/entity/currency/d3461fe0-ddf9-11ec-0a80-01ef00125213",
@@ -205,7 +205,7 @@ class moySkladFactory {
                     }
                 },
                 {
-                    "value": good.price,
+                    "value": good.price*100,
                     "currency": {
                       "meta": {
                         "href": "https://online.moysklad.ru/api/remap/1.2/entity/currency/d3461fe0-ddf9-11ec-0a80-01ef00125213",
