@@ -122,7 +122,7 @@ class moySkladFactory {
 
         const counterparty = await this.makeApiRequest('counterparty', 'POST', counterpartyData);
 
-        return [false, counterparty];
+        return [true, counterparty];
     }
 
     async getOrCreateGood(good : orderDataItemGood) : Promise<[boolean, any]>
@@ -145,6 +145,28 @@ class moySkladFactory {
             code : good.id.toString(),
             article : good.id.toString(),
             description : 'Создано через плагин chrome. Отредактируйте единицы измерения, группу и остальные данные, если требуется.',
+            minPrice : {
+                value : 0,
+                currency: {
+                    "meta": {
+                      "href": "https://online.moysklad.ru/api/remap/1.2/entity/currency/d3461fe0-ddf9-11ec-0a80-01ef00125213",
+                      "metadataHref": "https://online.moysklad.ru/api/remap/1.2/entity/currency/metadata",
+                      "type": "currency",
+                      "mediaType": "application/json"
+                    }
+                }
+            },
+            buyPrice : {
+                value : 0,
+                currency: {
+                    "meta": {
+                      "href": "https://online.moysklad.ru/api/remap/1.2/entity/currency/d3461fe0-ddf9-11ec-0a80-01ef00125213",
+                      "metadataHref": "https://online.moysklad.ru/api/remap/1.2/entity/currency/metadata",
+                      "type": "currency",
+                      "mediaType": "application/json"
+                    }
+                }
+            },
             salePrices: [
                 {
                   "value": good.price,
@@ -200,6 +222,60 @@ class moySkladFactory {
                       }
                     }
                 },
+                {
+                    "value": 0,
+                    "currency": {
+                      "meta": {
+                        "href": "https://online.moysklad.ru/api/remap/1.2/entity/currency/d3461fe0-ddf9-11ec-0a80-01ef00125213",
+                        "metadataHref": "https://online.moysklad.ru/api/remap/1.2/entity/currency/metadata",
+                        "type": "currency",
+                        "mediaType": "application/json"
+                      }
+                    },
+                    "priceType": {
+                      "meta": {
+                        "href": "https://online.moysklad.ru/api/remap/1.2/context/companysettings/pricetype/7a27e4ed-ddff-11ec-0a80-036f00127fdb",
+                        "type": "pricetype",
+                        "mediaType": "application/json"
+                      }
+                    }
+                },
+                {
+                    "value": 0,
+                    "currency": {
+                      "meta": {
+                        "href": "https://online.moysklad.ru/api/remap/1.2/entity/currency/d3461fe0-ddf9-11ec-0a80-01ef00125213",
+                        "metadataHref": "https://online.moysklad.ru/api/remap/1.2/entity/currency/metadata",
+                        "type": "currency",
+                        "mediaType": "application/json"
+                      }
+                    },
+                    "priceType": {
+                      "meta": {
+                        "href": "https://online.moysklad.ru/api/remap/1.2/context/companysettings/pricetype/7a27e5e5-ddff-11ec-0a80-036f00127fdc",
+                        "type": "pricetype",
+                        "mediaType": "application/json"
+                      }
+                    }
+                },
+                {
+                    "value": 0,
+                    "currency": {
+                      "meta": {
+                        "href": "https://online.moysklad.ru/api/remap/1.2/entity/currency/d3461fe0-ddf9-11ec-0a80-01ef00125213",
+                        "metadataHref": "https://online.moysklad.ru/api/remap/1.2/entity/currency/metadata",
+                        "type": "currency",
+                        "mediaType": "application/json"
+                      }
+                    },
+                    "priceType": {
+                      "meta": {
+                        "href": "https://online.moysklad.ru/api/remap/1.2/context/companysettings/pricetype/cd301061-de82-11ec-0a80-06c9000bb979",
+                        "type": "pricetype",
+                        "mediaType": "application/json"
+                      }
+                    }
+                }
             ],
             country : {
                 "meta": {
@@ -213,7 +289,7 @@ class moySkladFactory {
 
         const product = await this.makeApiRequest('product', 'POST', goodData);
 
-        return [false, product];
+        return [true, product];
         
     }
 
@@ -295,12 +371,15 @@ class moySkladFactory {
                         meta: counterparties[orderItem.customer.id].meta
                     },
                     name : orderItem.id+'-AmwayOrder',
+                    moment : `${order.date.getFullYear()}-${(order.date.getMonth()>8 ? '' : '0') + (order.date.getMonth()+1)}-${(order.date.getDate()>9 ? '' : '0') + order.date.getDate()} ${(order.date.getHours()>9 ? '' : '0') + order.date.getHours()}:${(order.date.getMinutes()>9 ? '' : '0') + order.date.getMinutes()}:00`,
                     rate : {
-                        "meta": {
-                            "href": "https://online.moysklad.ru/api/remap/1.2/entity/currency/d3461fe0-ddf9-11ec-0a80-01ef00125213",
-                            "metadataHref": "https://online.moysklad.ru/api/remap/1.2/entity/currency/metadata",
-                            "type": "currency",
-                            "mediaType": "application/json"
+                        currency : {
+                            "meta": {
+                                "href": "https://online.moysklad.ru/api/remap/1.2/entity/currency/d3461fe0-ddf9-11ec-0a80-01ef00125213",
+                                "metadataHref": "https://online.moysklad.ru/api/remap/1.2/entity/currency/metadata",
+                                "type": "currency",
+                                "mediaType": "application/json"
+                            }
                         }
                     },
                     positions : []
